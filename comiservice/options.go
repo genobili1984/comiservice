@@ -1,7 +1,7 @@
 package main
 
 import (
-	"comiserver/internal"
+	"comiservice/internal"
 	"log"
 	"os"
 )

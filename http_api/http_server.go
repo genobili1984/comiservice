@@ -1,7 +1,7 @@
 package http_api
 
 import (
-	"comiserver/internal"
+	"comiservice/internal"
 	"log"
 	"net"
 	"net/http"

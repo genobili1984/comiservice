@@ -1,7 +1,7 @@
 package main
 
 import (
-	"comiserver/internal"
+	"comiservice/internal"
 )
 
 type Logger lg.Logger

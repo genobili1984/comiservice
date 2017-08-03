@@ -1,7 +1,7 @@
 package main
 
 import (
-	"comiserver/http_api"
+	"comiservice/http_api"
 	"fmt"
 	"net/http"
 

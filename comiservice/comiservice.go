@@ -1,9 +1,9 @@
 package main
 
 import (
-	"comiserver/http_api"
-	"comiserver/internal"
-	"comiserver/util"
+	"comiservice/http_api"
+	"comiservice/internal"
+	"comiservice/util"
 	"log"
 	"net"
 	"os"
