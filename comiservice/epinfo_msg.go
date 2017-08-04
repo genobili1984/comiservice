@@ -3,7 +3,6 @@ package main
 import (
 	"comiservice/db"
 	"database/sql"
-	"fmt"
 	"net/http"
 
 	"github.com/julienschmidt/httprouter"
@@ -17,7 +16,7 @@ func (s *httpServer) epinfo(w http.ResponseWriter, req *http.Request, ps httprou
 	// log.Println(reqParams)
 	dbMaster := dbmanager.GetDB(dbmanager.DBMaster)
 	if dbMaster != nil {
-		rows, err := dbMaster.Query("select * from comico_online.t_comico_info limit 5;")
+		rows, err := dbMaster.Query("select * from comico_online.t_comico_info where comco_id = 77;")
 		if err != nil {
 			panic(err.Error())
 		}
@@ -43,9 +42,8 @@ func (s *httpServer) epinfo(w http.ResponseWriter, req *http.Request, ps httprou
 				} else {
 					value = string(col)
 				}
-				s.ctx.comiservice.logf(LOG_INFO, "%s:%s", columns[i], value, nil)
+				s.ctx.comiservice.logf(LOG_INFO, "%s:%s", columns[i], value)
 			}
-			fmt.Println("-----------------------------------")
 		}
 	} else {
 		s.ctx.comiservice.logf(LOG_INFO, "dbMaster is nil ", nil)
