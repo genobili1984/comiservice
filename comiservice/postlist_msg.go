@@ -12,12 +12,7 @@ import (
 func (s *httpServer) getpost(w http.ResponseWriter, req *http.Request, ps httprouter.Params) (interface{}, error) {
 	dbMaster := dbmanager.GetDB(dbmanager.DBMaster)
 	if dbMaster != nil {
-		stmtIns, err := dbMaster.Prepare("update t_comico_info set comico_auth=? where comico_id = 77;")
-		if err != nil {
-			panic(err.Error())
-		}
-		defer stmtIns.Close()
-		res, err := stmtIns.Exec("五仁月饼大大")
+		res, err := dbMaster.Exec("update t_comico_info set comico_auth=? where comico_id = 77;", "五仁月饼大大")
 		if err != nil {
 			panic(err.Error())
 		}
