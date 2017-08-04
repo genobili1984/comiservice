@@ -2,7 +2,10 @@ package dbmanager
 
 import (
 	"database/sql"
+	"fmt"
 	"sync"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 const (
@@ -16,11 +19,11 @@ var slavedb *sql.DB
 var once sync.Once
 
 func openDB() {
-	mdb, err := sql.Open("mysql", "root:head@5566@tcp(127.0.0.1:3306)/")
+	mdb, err := sql.Open("mysql", "root:head@5566@tcp(127.0.0.1:3306)/comico_test")
 	if err == nil {
 		masterdb = mdb
 	}
-	sdb, err := sql.Open("mysql", "root:head@5566@tcp(127.0.0.1:3306)/")
+	sdb, err := sql.Open("mysql", "root:head@5566@tcp(127.0.0.1:3306)/comico_test")
 	if err == nil {
 		slavedb = sdb
 	}
@@ -28,11 +31,17 @@ func openDB() {
 
 func CloseDB() {
 	if masterdb != nil {
-		masterdb.Close()
+		err := masterdb.Close()
+		if err == nil {
+			fmt.Println("close master db ok ")
+		}
 	}
 
 	if slavedb != nil {
-		slavedb.Close()
+		err := slavedb.Close()
+		if err == nil {
+			fmt.Println("close slave db ok ")
+		}
 	}
 }
 

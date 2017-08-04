@@ -1,6 +1,7 @@
 package main
 
 import (
+	"comiservice/db"
 	"comiservice/http_api"
 	"comiservice/internal"
 	"comiservice/util"
@@ -57,4 +58,5 @@ func (l *ComiService) Exit() {
 		l.httpListener.Close()
 	}
 	l.waitGroup.Wait()
+	dbmanager.CloseDB()
 }
