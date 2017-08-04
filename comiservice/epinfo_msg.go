@@ -47,6 +47,8 @@ func (s *httpServer) epinfo(w http.ResponseWriter, req *http.Request, ps httprou
 			}
 			fmt.Println("-----------------------------------")
 		}
+	} else {
+		s.ctx.comiservice.logf(LOG_INFO, "dbMaster is nil ", nil)
 	}
 	channels := "xxxxxxxx"
 	return map[string]interface{}{
