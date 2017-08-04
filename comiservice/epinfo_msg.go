@@ -16,7 +16,7 @@ func (s *httpServer) epinfo(w http.ResponseWriter, req *http.Request, ps httprou
 	// log.Println(reqParams)
 	dbMaster := dbmanager.GetDB(dbmanager.DBMaster)
 	if dbMaster != nil {
-		rows, err := dbMaster.Query("select * from comico_online.t_comico_info where comco_id = 77;")
+		rows, err := dbMaster.Query("select * from comico_online.t_comico_info where comico_id = 77;")
 		if err != nil {
 			panic(err.Error())
 		}
