@@ -8,8 +8,6 @@ import (
 	"path/filepath"
 	"syscall"
 
-	"runtime"
-
 	"github.com/BurntSushi/toml"
 	"github.com/judwhite/go-svc/svc"
 	options "github.com/mreiferson/go-options"
@@ -31,7 +29,6 @@ func comiFlagSet(opts *Options) *flag.FlagSet {
 }
 
 func main() {
-	runtime.GOMAXPROCS(2)
 	prg := &program{}
 	if err := svc.Run(prg, syscall.SIGINT, syscall.SIGTERM); err != nil {
 		log.Fatal(err)
