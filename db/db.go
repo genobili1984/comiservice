@@ -19,11 +19,11 @@ var slavedb *sql.DB
 var once sync.Once
 
 func openDB() {
-	mdb, err := sql.Open("mysql", "root:head@5566@tcp(127.0.0.1:3306)/comico_test")
+	mdb, err := sql.Open("mysql", "root:head@5566@tcp(127.0.0.1:3306)/comico_test?charset=utf8")
 	if err == nil {
 		masterdb = mdb
 	}
-	sdb, err := sql.Open("mysql", "root:head@5566@tcp(127.0.0.1:3306)/comico_test")
+	sdb, err := sql.Open("mysql", "root:head@5566@tcp(127.0.0.1:3306)/comico_test?charset=utf8")
 	if err == nil {
 		slavedb = sdb
 	}
